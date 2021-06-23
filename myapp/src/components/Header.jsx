@@ -11,11 +11,6 @@ import Program from './Program';
 import Reservation from './Reservation';
 
 
-// function Home() {
-//   return <div><Home></Home></div>;
-// }
-
-
 // let Home = () => <div>logo</div>
 // let Program = () => <div>Πρόγραμμα</div>
 // let Reservation = () => <div>Κρατήσεις</div>

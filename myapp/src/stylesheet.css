@@ -115,3 +115,50 @@ footer {
     color:#064b6b;
 }
 
+
+/* ---- home page */
+
+#hero {
+    background-image: url(./images/don-joviani.jpeg);
+    background-position: bottom;
+    margin:2.2em;
+    min-height:500px;
+}
+
+.caption {
+    color:#fff;
+    text-align:center;
+    padding:11em;
+}
+.caption .title {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 58px;
+}
+
+.caption .dates{
+    font-size:28px;
+    margin-bottom:10px;
+
+}
+
+.caption .composer{
+    font-size:28px;
+}
+
+
+#search {
+    text-align: center;
+    padding:1em 0 2em 0;
+    margin: 0 2.2em;
+    background-color: #ebebeb;
+}
+
+#banners {
+    text-align: center;
+    margin:2em;
+}
+
+#banners img {
+    width:33%;
+    margin-right: 5px;
+}
