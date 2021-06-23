@@ -93,5 +93,25 @@ nav a:hover  {
     background-color: rgba(255, 255, 255, 0.20);
 }
 
+/* ------------ FOOTER ---------- */
 
+footer {
+    background-color: #008ece;
+    padding:1em;
+    clear: both;
+}
+
+.footerLinks ul {
+    text-align: center;
+}
+
+.footerLinks ul li{
+    display: inline;
+    padding:2em;
+}
+
+.footerLinks ul li a:hover {
+    text-decoration: underline;
+    color:#064b6b;
+}
 
