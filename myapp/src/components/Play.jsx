@@ -13,13 +13,13 @@ function Play(props) {
                     <div className="composer">{shows[props.url].composer}</div>
                     <br />
                     <div className="month">{shows[props.url].mounth}</div>
-                    <div className="dates"><Dates dates={shows[props.url].dates}></Dates></div>
+                    <div className="dates"><Dates dates={shows[props.url].dates} /></div>
                     <br />
                     <div className="production">{shows[props.url].production}</div>
                     <div className="description">{shows[props.url].description}</div>
                     <br />
                     <div className="actors">Ηθοποιοί:</div>
-                    <div id="actors"></div>
+                    <div id="actors"><Actors roles={shows[props.url].roles} /></div>
                     <br />
                     {/* <button className="program btn"><a >Δείτε το πρόγγραμμα </a></button>
                     <button className="btn"><a id="reserve">Κάντε κράτηση </a></button> */}
@@ -37,14 +37,26 @@ function Play(props) {
 
 export function Dates(props) {
     let stringDates ="";
-    console.log(props.dates);
-    // props.dates.forEach(key => {
-    //     stringDates += props.dates;
-    //     console.log(stringDates);
-    // });
     stringDates += props.dates;
     stringDates = stringDates.replaceAll(',', ', ');
     return (
         <div> {stringDates}</div>
+    )
+}
+
+function Actors (props) {
+
+    console.log(props.roles)
+    let actors = "";
+    for (let role in props.roles) {
+        // console.log(role)
+        for(let actor in props.roles[role]) {
+            console.log(actor)
+            actors += actor;
+            actors += ", ";
+        }
+    }
+    return (
+        <div> {actors}</div>
     )
 }
