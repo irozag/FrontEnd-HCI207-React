@@ -212,3 +212,71 @@ footer {
         padding-top:2px;
         position: absolute;
     }
+
+    /* ------ play */
+
+.wrapper {
+    display: grid;
+    /* gap:5px; */
+    /* grid-auto-columns: minmax(auto, 50%); */
+    width:100%;
+    grid-template-columns: 1fr ;
+    grid-row: 2;
+    grid-template-areas: 
+            "main"
+            "photo photo";
+}
+
+.photo {
+    grid-area:photo;
+    grid-row: 2;
+  
+}
+
+.play.main{
+    grid-area:main;
+    margin: 2em 4em 2em 0;
+    height: 80%;
+    grid-row: 1;
+}
+.play.photo .feature-photo{
+    /* background-image: url(/assets/hero-tzovani.jpeg); */
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    /* min-height: 96%; */
+    min-height: 100%;
+}
+.play  .composer {
+    font-size: 20px;
+}
+
+.crew {
+    /* margin-top:-30px; */
+    background: #000000a8;
+    color: #fff;
+    padding: 50px 20px;
+    grid-row: 2;
+    grid-column: 3/4;
+    justify-self: flex-start;
+
+}
+
+.details {
+    margin: 20px;
+    color:#c3c3c3;
+}
+.details span{
+    display: inline-block;
+    margin-left:10px;
+    font-size:18px;
+    color:#fff;
+}
+.program {
+    margin-right:10px;
+}
+
+.actors, .month, .production {
+    font-size:18px;
+    font-weight: bold;
+}

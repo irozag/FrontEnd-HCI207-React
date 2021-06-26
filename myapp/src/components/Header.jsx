@@ -11,7 +11,6 @@ import Home from './Home';
 import Program from './Program';
 import Reservation from './Reservation';
 import Play from './Play';
-// import { shows } from '../shows';
 
 
 // let Home = () => <div>logo</div>
