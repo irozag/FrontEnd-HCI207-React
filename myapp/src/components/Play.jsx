@@ -2,7 +2,7 @@ import React from "react";
 import { shows } from '../shows';
 
 function Play(props) {
-
+   let reservationURL =`/reservation/${props.url}`
     return (
         <div className="container">
             {/* <h3>ID: test {props.url}</h3> */}
@@ -22,7 +22,7 @@ function Play(props) {
                     <div id="actors"><Actors roles={shows[props.url].roles} /></div>
                     <br />
                     <button className="program btn"><a href="/program">Δείτε το πρόγγραμμα </a></button>
-                    <button className="btn"><a href="/reservation" id="reserve">Κάντε κράτηση </a></button>
+                    <button className="btn"><a href={reservationURL} id="reserve">Κάντε κράτηση </a></button>
                     {/* TO DO URL TO RESERVATIONS */}
                 </div>
                 <div className="play photo">
@@ -111,46 +111,3 @@ function Crew (props) {
         <div class="details">{text}<span id={props.crewRol}>{props.crewName}</span></div>
     )
 }
-
-
-// const crew = play['crew']
-// for (person in crew) {
-//     //     if(crew.person != undefined) 
-//     // console.log(details[i]);
-//     switch (person) {
-//         case "conductor":
-//             text = "Μαέστρος";
-//             break;
-//         case "director":
-//             text = "Σκηνοθέτης";
-//             break;
-//         case "sets":
-//             text = "Σετς";
-//             break;
-//         case "costumes":
-//             text = "Κοστούμια";
-//             break;
-//         case "lighting designer":
-//             text = "Σχεδιασμός φωτισμού";
-//             break;
-//         case "chorus master":
-//             text = "Χωροδός";
-//             break;
-//         case "associate-director":
-//             text = "Βοηθός Σκηνοθέτη";
-//             break;
-//         case "choreographer":
-//             text = "Χορογράφος";
-//             break;
-//         case "programmer video":
-//             text = "Προγραμματισμός βίντεο";
-//             break;
-//         case "video designer":
-//             text = "Σχεδιασμός βίντεο";
-//             break;
-//         case "video projection designer":
-//             text = "Σχεδιασμός βιντεοπροβολών";
-//             break;
-//         default:
-//             text = " ";
-//     }

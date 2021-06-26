@@ -41,8 +41,10 @@ function Header() {
         <Switch>
             <Route path="/program" exact component={() => <Program/>} />
             <Route path="/reservation" exact component={() => <Reservation/>} />
+            <Route path="/reservation/:playId" exact component={() => <Reservation/>} />
             <Route path="/" exact component={() => <Home/>} />
             <Route path="/:playId" children={<PlayPage />} />
+        
         </Switch>
       </div>
     </Router>
