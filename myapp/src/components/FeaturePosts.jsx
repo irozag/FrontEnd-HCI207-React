@@ -11,7 +11,6 @@ export function FeaturePosts(props) {
             <div id="row">
                 {
                     Object.entries(props.shows).map(([title, show]) => {
-                        console.log(props.shows)
                         return <FeaturePost key={title} show={show}  url={title}/>
                     })
                 }

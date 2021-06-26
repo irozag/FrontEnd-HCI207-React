@@ -2,7 +2,7 @@ import React from "react";
 import { shows } from '../shows';
 
 function Play(props) {
-    console.log("test:", shows[props.url]);
+    // console.log("test:", shows[props.url]);
     return (
         <div className="container">
             <h3>ID: test {props.url}</h3>
@@ -13,7 +13,7 @@ function Play(props) {
                     <div className="composer">{shows[props.url].composer}</div>
                     <br />
                     <div className="month">{shows[props.url].mounth}</div>
-                    <div className="dates"></div>
+                    <div className="dates"><Dates dates={shows[props.url].dates}></Dates></div>
                     <br />
                     <div className="production">{shows[props.url].production}</div>
                     <div className="description">{shows[props.url].description}</div>
@@ -34,3 +34,17 @@ function Play(props) {
         </div>
     );
 } export default Play;
+
+export function Dates(props) {
+    let stringDates ="";
+    console.log(props.dates);
+    // props.dates.forEach(key => {
+    //     stringDates += props.dates;
+    //     console.log(stringDates);
+    // });
+    stringDates += props.dates;
+    stringDates = stringDates.replaceAll(',', ', ');
+    return (
+        <div> {stringDates}</div>
+    )
+}
