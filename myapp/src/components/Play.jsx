@@ -2,10 +2,10 @@ import React from "react";
 import { shows } from '../shows';
 
 function Play(props) {
-    // console.log("test:", shows[props.url]);
+
     return (
         <div className="container">
-            <h3>ID: test {props.url}</h3>
+            {/* <h3>ID: test {props.url}</h3> */}
             <section className="wrapper">
                 <div className="play main">
                     <div className="room">{shows[props.url].room}</div>
@@ -21,14 +21,21 @@ function Play(props) {
                     <div className="actors">Ηθοποιοί:</div>
                     <div id="actors"><Actors roles={shows[props.url].roles} /></div>
                     <br />
-                    {/* <button className="program btn"><a >Δείτε το πρόγγραμμα </a></button>
-                    <button className="btn"><a id="reserve">Κάντε κράτηση </a></button> */}
+                    <button className="program btn"><a href="/program">Δείτε το πρόγγραμμα </a></button>
+                    <button className="btn"><a href="/reservation" id="reserve">Κάντε κράτηση </a></button>
+                    {/* TO DO URL TO RESERVATIONS */}
                 </div>
                 <div className="play photo">
                     <div className="feature-photo" style={{ backgroundImage: `url("${shows[props.url].photo}")` }}></div>
                 </div>
-
-                <div className="crew overlay"> test </div>
+              
+                <div className="crew overlay"> 
+                {
+                    Object.entries(shows[props.url].crew).map(([crewRol, crewName]) => {
+                        return <Crew key={crewRol} crewName={crewName}  crewRol={crewRol}/>
+                    })
+                }
+                 </div>
 
             </section>
         </div>
@@ -45,13 +52,9 @@ export function Dates(props) {
 }
 
 function Actors (props) {
-
-    console.log(props.roles)
     let actors = "";
     for (let role in props.roles) {
-        // console.log(role)
         for(let actor in props.roles[role]) {
-            console.log(actor)
             actors += actor;
             actors += ", ";
         }
@@ -60,3 +63,94 @@ function Actors (props) {
         <div> {actors}</div>
     )
 }
+
+
+
+function Crew (props) {
+    let text;
+    console.log(props.crewName)
+    switch (props.crewRol) {
+                case "conductor":
+                    text = "Μαέστρος";
+                    break;
+                case "director":
+                    text = "Σκηνοθέτης";
+                    break;
+                case "sets":
+                    text = "Σετς";
+                    break;
+                case "costumes":
+                    text = "Κοστούμια";
+                    break;
+                case "lighting designer":
+                    text = "Σχεδιασμός φωτισμού";
+                    break;
+                case "chorus master":
+                    text = "Χωροδός";
+                    break;
+                case "associate-director":
+                    text = "Βοηθός Σκηνοθέτη";
+                    break;
+                case "choreographer":
+                    text = "Χορογράφος";
+                    break;
+                case "programmer video":
+                    text = "Προγραμματισμός βίντεο";
+                    break;
+                case "video designer":
+                    text = "Σχεδιασμός βίντεο";
+                    break;
+                case "video projection designer":
+                    text = "Σχεδιασμός βιντεοπροβολών";
+                    break;
+                default:
+                    text = " ";
+            }
+         
+    return (
+        <div class="details">{text}<span id={props.crewRol}>{props.crewName}</span></div>
+    )
+}
+
+
+// const crew = play['crew']
+// for (person in crew) {
+//     //     if(crew.person != undefined) 
+//     // console.log(details[i]);
+//     switch (person) {
+//         case "conductor":
+//             text = "Μαέστρος";
+//             break;
+//         case "director":
+//             text = "Σκηνοθέτης";
+//             break;
+//         case "sets":
+//             text = "Σετς";
+//             break;
+//         case "costumes":
+//             text = "Κοστούμια";
+//             break;
+//         case "lighting designer":
+//             text = "Σχεδιασμός φωτισμού";
+//             break;
+//         case "chorus master":
+//             text = "Χωροδός";
+//             break;
+//         case "associate-director":
+//             text = "Βοηθός Σκηνοθέτη";
+//             break;
+//         case "choreographer":
+//             text = "Χορογράφος";
+//             break;
+//         case "programmer video":
+//             text = "Προγραμματισμός βίντεο";
+//             break;
+//         case "video designer":
+//             text = "Σχεδιασμός βίντεο";
+//             break;
+//         case "video projection designer":
+//             text = "Σχεδιασμός βιντεοπροβολών";
+//             break;
+//         default:
+//             text = " ";
+//     }
