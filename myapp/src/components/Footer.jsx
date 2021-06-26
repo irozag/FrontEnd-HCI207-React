@@ -5,9 +5,9 @@ function Footer() {
         <footer>
         <div className="footerLinks">
             <ul>
-                <li><a href="#">Σχετικα με τη Λυρικη Σκηνη</a></li>
-                <li><a href="#">Επικοινωνια</a></li>
-                <li><a href="#">Πολιτικη προσωπικων δεδομενων</a></li>
+                <li><a href="foo">Σχετικα με τη Λυρικη Σκηνη</a></li>
+                <li><a href="foo">Επικοινωνια</a></li>
+                <li><a href="foo">Πολιτικη προσωπικων δεδομενων</a></li>
             </ul>
         </div>
         </footer>
