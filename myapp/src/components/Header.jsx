@@ -3,12 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useParams
 } from "react-router-dom";
 import logo from '../images/logo.png';
 import Home from './Home';
 import Program from './Program';
 import Reservation from './Reservation';
+import Play from './Play';
+// import { shows } from '../shows';
 
 
 // let Home = () => <div>logo</div>
@@ -38,10 +41,9 @@ function Header() {
         renders the first one that matches the current URL. */}
         <Switch>
             <Route path="/program" exact component={() => <Program/>} />
-          <Route path="/reservation">
-            <Reservation />
-          </Route>
-          <Route path="/" exact component={() => <Home/>} />
+            <Route path="/reservation" exact component={() => <Reservation/>} />
+            <Route path="/" exact component={() => <Home/>} />
+            <Route path="/:playId" children={<PlayPage />} />
         </Switch>
       </div>
     </Router>
@@ -49,3 +51,12 @@ function Header() {
 
 } export default Header;
 
+function PlayPage() {
+  // We can use the `useParams` hook here to access
+  // the dynamic pieces of the URL.
+  let { playId } = useParams();
+
+  return (
+    <Play url={playId} />
+  );
+}
