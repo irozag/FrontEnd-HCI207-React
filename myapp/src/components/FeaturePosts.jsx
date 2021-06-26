@@ -1,11 +1,11 @@
 
 import React from "react";
 
-export function FeaturePosts (props) {
+export function FeaturePosts(props) {
     // console.log(shows)
 
     return (
-        <div>
+        <div id="row">
             {
                 Object.entries(props.shows).map(([name, show]) => {
                     console.log(props.shows)
@@ -14,16 +14,21 @@ export function FeaturePosts (props) {
             }
         </div>
     )
-    
+
 }
 
 
-export function FeaturePost(props) { 
- 
+export function FeaturePost(props) {
+    console.log(props.show.photo)
     return (
         <div>
-            {/* {JSON.stringify(show)} */}
-            <div> {props.show.composer}</div>
+            <div className="feature">
+                <div className="dates">{props.show.mounth}</div>
+                <div className="feature-photo" style={{ backgroundImage: `url("${props.show.photo}")` }}></div>
+                <div className="room">{props.show.room}</div>
+                <div className="title" >{props.show.name}</div>
+                <div className="composer">{props.show.composer}</div>
+            </div>
         </div>
     )
 
