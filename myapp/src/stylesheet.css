@@ -213,9 +213,11 @@ footer {
         position: absolute;
     }
 
-    /* ------ play */
+
+/* ------ play */
 
 .wrapper {
+    margin: 0 2.2em;
     display: grid;
     /* gap:5px; */
     /* grid-auto-columns: minmax(auto, 50%); */
@@ -280,3 +282,37 @@ footer {
     font-size:18px;
     font-weight: bold;
 }
+
+
+    @media (min-width: 992px) { 
+        .footer-links ul li{
+            display: inline;
+            padding:2em;
+        }
+        .wrapper {
+            grid-row: 1;
+            grid-template-columns: 50% 10% 1fr;
+            grid-template-areas:
+            'main photo photo';
+        }
+        .crew { 
+            grid-row: 1;
+            grid-column: 3/ 4;
+            margin-top: -30px;
+        }
+        .photo {
+            grid-row: 1;
+        }
+        .details span{
+            display: block;
+            margin-left:0;
+        }
+        .map th span {
+            display: initial;
+        }
+        .date {
+            flex: 0 32%;
+        }
+    
+    }
+   

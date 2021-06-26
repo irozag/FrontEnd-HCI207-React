@@ -4,9 +4,9 @@ import { shows } from '../shows';
 function Play(props) {
     console.log("test:", shows[props.url]);
     return (
-        <div>
+        <div className="container">
             <h3>ID: test {props.url}</h3>
-            <section id="play" className="wrapper">
+            <section className="wrapper">
                 <div className="play main">
                     <div className="room">{shows[props.url].room}</div>
                     <div className="title">{shows[props.url].name}</div>
@@ -28,7 +28,7 @@ function Play(props) {
                     <div className="feature-photo" style={{ backgroundImage: `url("${shows[props.url].photo}")` }}></div>
                 </div>
 
-                <div className="crew overlay">  </div>
+                <div className="crew overlay"> test </div>
 
             </section>
         </div>
