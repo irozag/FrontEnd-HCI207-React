@@ -3,84 +3,69 @@ import Rect from "./Rect";
 
 
 export default function SeatMap() {
-   
-
-
-
-    const draw = (ctx) => {
-        ctx.font = "14px sans-serif";
-        const width = 10;
-        const height = 20;
-        let nextDrawX = 0;
-        let nextDrawY = 0;
-        let rects = [];
-
-        for (let i = 1; i <= 10; i++) {
-            ctx.fillStyle = "#000";
-            ctx.fillText("σειρά: " + i, nextDrawX, nextDrawY + 15);
-            nextDrawX += nextDrawX + 65;
-            for (let z = 1; z <= 50; z++) {
-                let type = "stage1"
-                var r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
-                r.drawRect(ctx);
-                rects.push(r);
-                nextDrawX = r.x + r.width + 2;
+       
+        const  rects = {
+                set current(rect){
+                    this.rectsArr.push(rect);
+                },
+                 rectsArr:[],
+                get latest() {
+                    return rects;
+                  }
             }
-            nextDrawY = r.y + r.height + 2;
-            nextDrawX = 0;
+
+        const draw = (ctx) => {
+            ctx.font = "14px sans-serif";
+            const width = 10;
+            const height = 20;
+            let nextDrawX = 0;
+            let nextDrawY = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                ctx.fillStyle = "#000";
+                ctx.fillText("σειρά: " + i, nextDrawX, nextDrawY + 15);
+                nextDrawX += nextDrawX + 65;
+                for (let z = 1; z <= 50; z++) {
+                    let type = "stage1"
+                    var r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
+                    rects.current = r;
+                    r.drawRect(ctx);
+                    nextDrawX = r.x + r.width + 2;
+                }
+                nextDrawY = r.y + r.height + 2;
+                nextDrawX = 0;
+            }
+
+            for (let i = 1; i <= 5; i++) {
+                ctx.fillStyle = "#000";
+                ctx.fillText("σειρά: " + i, nextDrawX, nextDrawY + 15);
+                nextDrawX += nextDrawX + 65;
+                for (let z = 1; z <= 50; z++) {
+                    let type = "stage2"
+                    r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
+                    r.drawRect(ctx);
+                    rects.current = r;
+                    nextDrawX = r.x + r.width + 2;
+                }
+                nextDrawY = r.y + r.height + 2;
+                nextDrawX = 0;
+            }
         }
 
-        for (let i = 1; i <= 5; i++) {
-            ctx.fillStyle = "#000";
-            ctx.fillText("σειρά: " + i, nextDrawX, nextDrawY + 15);
-            nextDrawX += nextDrawX + 65;
-            for (let z = 1; z <= 50; z++) {
-                let type = "stage2"
-                r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
-                r.drawRect(ctx);
-                rects.push(r);
-                nextDrawX = r.x + r.width + 2;
-            }
-            nextDrawY = r.y + r.height + 2;
-            nextDrawX = 0;
-        }
-    
-    }
-
-
-//    function createStage(rects,width,height,x,y,nSeiries,nSeats,type){
-//         for (let i = 1; i <= nSeiries; i++) {
-//             ctx.fillStyle = "#000";
-//             ctx.fillText("σειρά: " + i, x, y + 15);
-//             x += x + 65;
-//             for (let z = 1; z <= nSeats; z++) {
-//                 var r = new Rect(x, y, width, height, { i, z, type });
-//                 r.drawRect(ctx);
-//                 rects.push(r);
-//                 x = r.x + r.width + 2;
-//             }
-//             y = r.y + r.height + 2;
-//             x = 0;
-//         }
-//         return rects;
-//     }
-    
-      
-    return <Canvas draw={draw} rects={rects}  /> 
-    // rects={rects} 
+    return <Canvas draw={draw} rects={rects.rectsArr} />
 
 }
-
-
 
 
 //canvas mount
 export function Canvas(props) {
 
     const { draw, rects } = props
-    // console.log(props.rects)
+    console.log(props)
     const canvasRef = useRef(null)
     const [click, setClick] = useState({ x: "", y: "" })
+    //Γιατί την πρώτη φορά χάνει το κλικ;
+
     const handleClick = (e) => {
         setClick({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY })
         const rectClicked = rects.find((rect) => {

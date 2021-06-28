@@ -1,5 +1,5 @@
-import React from "react";
- export default class Rect extends React.Component {
+// import React from "react";
+ export default class Rect {
     constructor(x, y, width, height, id) {
                 this.x = x;
                 this.y = y;
@@ -8,12 +8,13 @@ import React from "react";
                 this.id = id;
                 // this.handleStatusChange = this.handleStatusChange.bind(this);
             }
+    
     drawRect (ctx) {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     } 
     hasClick = function (click) {
                 if (this.x <= click.x && click.x <= this.x + this.width && this.y <= click.y && click.y <= this.y + this.height) {
-                    this.isSelected(this.x, this.y);
+                    // this.isSelected(this.x, this.y);
                     return true;
                 } else return false;
             }
