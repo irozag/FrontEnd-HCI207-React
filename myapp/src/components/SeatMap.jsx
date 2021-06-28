@@ -3,6 +3,8 @@ import Rect from "./Rect";
 
 
 export default function SeatMap() {
+   
+
 
 
     const draw = (ctx) => {
@@ -42,28 +44,54 @@ export default function SeatMap() {
             nextDrawY = r.y + r.height + 2;
             nextDrawX = 0;
         }
+    
     }
 
-    return <Canvas draw={draw} />
+
+//    function createStage(rects,width,height,x,y,nSeiries,nSeats,type){
+//         for (let i = 1; i <= nSeiries; i++) {
+//             ctx.fillStyle = "#000";
+//             ctx.fillText("σειρά: " + i, x, y + 15);
+//             x += x + 65;
+//             for (let z = 1; z <= nSeats; z++) {
+//                 var r = new Rect(x, y, width, height, { i, z, type });
+//                 r.drawRect(ctx);
+//                 rects.push(r);
+//                 x = r.x + r.width + 2;
+//             }
+//             y = r.y + r.height + 2;
+//             x = 0;
+//         }
+//         return rects;
+//     }
+    
+      
+    return <Canvas draw={draw} rects={rects}  /> 
+    // rects={rects} 
 
 }
+
+
+
 
 //canvas mount
 export function Canvas(props) {
 
-    const { draw } = props
+    const { draw, rects } = props
+    // console.log(props.rects)
     const canvasRef = useRef(null)
-    const [click, setClick ] = useState({x:"",y:""})
+    const [click, setClick] = useState({ x: "", y: "" })
     const handleClick = (e) => {
-        setClick({x:e.nativeEvent.offsetX, y:e.nativeEvent.offsetY})
-        console.log(click);
+        setClick({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY })
+        const rectClicked = rects.find((rect) => {
+            return rect.hasClick(click);
+        });
+        console.log(rectClicked)
     }
 
     useEffect(() => {
-
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-
         //Our draw come here
         draw(context)
     }, [draw])
@@ -72,7 +100,14 @@ export function Canvas(props) {
 }
 
 
-
+// function getClickedSeat(x, y, rects) {
+//     rectClicked = rects.find((rect) => {
+//         return rect.hasClick(x, y);
+//     });
+//     if (rectClicked !== undefined) {
+//         return seat = rectClicked.seat;
+//     } else return seat = ["", "", "", ""];
+// }
 
 // export function CreateSeatMap(props) {
 
