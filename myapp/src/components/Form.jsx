@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-// import { shows } from '../shows';
+// import { shows } from "../shows";
+
+export default function Form(props) {
 
 
-
-export default function Form() {
-
-    // handleSubmit(event) {
-    //     alert('A name was submitted: ' + this.state.value);
-    //     event.preventDefault();
-    //   }
-    const [post, setPost] = useState({play:"", name:"", surname:"", email:""})
+    const [post, setPost] = useState({ playId: "", name: "", surname: "", email: "" })
 
     const handleSelect = (e) => {
-        setPost({ ...post, play: e.target.value })
+        setPost({ ...post, playId: e.target.value })
     }
 
     const handleName = (e) => {
@@ -33,22 +28,25 @@ export default function Form() {
         console.log("hello");
         e.preventDefault();
         // props.handleSubmit(post);
-        console.log (post)
+        console.log(post)
     }
 
 
     return (
         <div>
-            <form onSubmit={Submit}>  {/*submit* onSubmit={this.handleSubmit}}   */}
+            <form onSubmit={Submit}>  
                 <div className="list">
                     <legend>Επιλέξτε Παράσταση:</legend>
                     <select id="plays" name="plays" onChange={handleSelect}>
                         <option value="">--Παράσταση--</option>
-                        <option value="">Μαντάμα Μπαττερφλάι</option>
-                        <option value="">Ντον Τζοβάννι</option>
-                        <option value="">Δον Κιχώτης</option>
+                        {
+                            Object.entries(props.shows).map(([title, show]) => {
+                                return <Option key={title} show={show} id={title}/>
+                            })
+                        }
+            
                     </select>
-                    {/* <Select values="" state=""></Select> */}
+
                     {/* <div className="wrapper">
                         test
                         {/* <PlayDates></PlayDates>
@@ -59,7 +57,7 @@ export default function Form() {
                             <label htmlFor="name" >Όνομα:</label>
                             <input type="text" name="name" id="name" onChange={handleName} pattern="^[A-Za-zΑ-Ωα-ωΆ-Ώά-ώ]{3,}" placeholder="Type your name" required />
                             <label htmlFor="surname" >Επίθετο:</label>
-                            <input type="text" name="surname" id="surname" onChange={handleSurname}  pattern="^[A-Za-zΑ-Ωα-ωΆ-Ώά-ώ]{3,}" placeholder="Type your surname" required />
+                            <input type="text" name="surname" id="surname" onChange={handleSurname} pattern="^[A-Za-zΑ-Ωα-ωΆ-Ώά-ώ]{3,}" placeholder="Type your surname" required />
                             <label htmlFor="email" >Ηλεκτρονικό Ταχυδρομείο:</label>
                             <input type="email" name="email" id="email" onChange={handleEmail} placeholder="email@example.com" required />
                             <output id="message"></output>
@@ -74,16 +72,12 @@ export default function Form() {
     );
 }
 
-// export function Select(props) {
+export function Option(props) {
+    return (
+        <option value={props.id}>{props.show.name}</option>
+    )
 
-//     return (
-//         <select id="plays" name="plays">
-//             <option value="">--Παράσταση--</option>
-        
-//         </select>
-//     )
-
-// }
+}
 
 {/* export function userOptionSelecton() {
     // Αν ο χρηστης επιλέξει κάποια επιλογή απο τον επιλογέα

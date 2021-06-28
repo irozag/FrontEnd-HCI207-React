@@ -7,7 +7,7 @@ function Reservation() {
     return (
         <div>
               <FeaturePosts shows={shows}></FeaturePosts>
-              <section id="reservation" ><Form></Form></section>
+              <section id="reservation" ><Form shows={shows}></Form></section>
          
        </div>
     );
