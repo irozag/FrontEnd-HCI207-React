@@ -350,7 +350,7 @@ footer {
 
 /* ------ reservations */
 
-.list select, .list .btn {
+.list > select, .list .btn {
     width:900px;
 }
 

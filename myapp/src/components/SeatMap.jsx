@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Rect from "./Rect";
+import Seat from "./Seat";
 
 
 export default function SeatMap() {
@@ -52,7 +53,14 @@ export default function SeatMap() {
         }
     }
 
-    return <Canvas draw={draw} rects={rects.rectsArr} />
+    const rectClicked =0;
+
+    return (
+        <div>
+        <Canvas draw={draw} rects={rects.rectsArr} />
+        <Seat seat={rectClicked} />
+        </div>
+    );
 
 }
 
@@ -72,6 +80,9 @@ export function Canvas(props) {
             return rect.hasClick(click);
         });
         console.log(rectClicked)
+  
+        // return  <Seat seat={rectClicked} />;
+       
     }
 
     useEffect(() => {
@@ -84,29 +95,7 @@ export function Canvas(props) {
     return <canvas ref={canvasRef} onClick={handleClick} className="map" width="700" height="400" />
 }
 
-export function Seat(props) {
 
-    const [seat,setSeat] = useState({ stage: "", seat: "", line:"", ticket:"" })
-    const handleSelect = (e) => {
-        setSeat({ ...post, ticket: e.target.value })
-    }
-   
-    return (
-        <div>
-            <label htmlfor="ticket">Τοποθεσία:</label>
-            <input type="text" name="stage" id="stage" disabled size="7"  />
-            <label htmlfor="seat" >Θέση:</label>
-            <input type="text" name="seat" disabled size="5" />
-            <label htmlfor="seat" >Σειρά:</label>
-            <input type="text" name="line" id="lineSelection" disabled size="5" />
-            <label htmlfor="ticket" >Εισητήριο:</label>
-            <select id="ticket" name="ticket" onChange={handleSelect}>
-                <option value="regural">Κανονικό</option>
-                <option value="student">Φοιτιτικό</option>
-            </select >
-        </div>
-    );
-}
 
 
 // <div class="container">
