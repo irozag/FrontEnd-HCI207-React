@@ -2,7 +2,7 @@ import React from "react";
 import { shows } from '../shows';
 
 function Play(props) {
-   let reservationURL =`/reservation/${props.url}`
+    let reservationURL =`/reservation/${props.url}`
     return (
         <div className="container">
             {/* <h3>ID: test {props.url}</h3> */}
@@ -63,7 +63,6 @@ function Actors (props) {
         <div> {actors}</div>
     )
 }
-
 
 
 function Crew (props) {

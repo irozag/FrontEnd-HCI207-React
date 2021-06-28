@@ -44,7 +44,7 @@ button:hover, .btn:hover {
     background-color:#0e7eb1;
 }
 
-input {
+input, select {
     padding: 1em;
     margin-left:0.5em;
     border:1px solid transparent;
@@ -56,6 +56,10 @@ input:hover {
 input.in-date {
     padding: 0.83em;
     width:250px;
+}
+
+.row {
+    padding:0.5em 0;
 }
 
 /* ------------ HEADER ---------- */
@@ -345,6 +349,11 @@ footer {
 
 
 /* ------ reservations */
+
+.list select, .list .btn {
+    width:900px;
+}
+
 .seat {
     width: 10px;
     height: 10px;
@@ -459,7 +468,7 @@ footer {
 .personalDetails, .positions {
     /* grid-column: 2 / 11; */
     padding:10px 0 20px;
-    display: none;
+    /* display: none; */
 }
 /* #reservation .dates {
     grid-column: 1 /11;
