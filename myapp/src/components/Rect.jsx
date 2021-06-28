@@ -10,6 +10,12 @@
     drawRect (ctx) {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     } 
+    // hasClick = function (x, y) {
+    //             if (this.x <= x && x <= this.x + this.width && this.y <= y && y <= this.y + this.height) {
+    //                 this.isSelected(this.x, this.y);
+    //                 return true;
+    //             } else return false;
+    //         }
  }
 
 //  export default class Rect {

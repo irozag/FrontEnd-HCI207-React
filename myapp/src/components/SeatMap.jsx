@@ -1,26 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Rect from "./Rect";
-
-//canvas mount
-export function Canvas(props) {
-
-    const { draw } = props
-    const canvasRef = useRef(null)
-
-    useEffect(() => {
-
-        const canvas = canvasRef.current
-        const context = canvas.getContext('2d')
-
-        //Our draw come here
-        draw(context)
-    }, [draw])
-
-    return <canvas ref={canvasRef} className="map" width="700" height="400" />
-}
 
 
 export default function SeatMap() {
+
 
     const draw = (ctx) => {
         ctx.font = "14px sans-serif";
@@ -51,7 +34,7 @@ export default function SeatMap() {
             nextDrawX += nextDrawX + 65;
             for (let z = 1; z <= 50; z++) {
                 let type = "stage2"
-                var r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
+                r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
                 r.drawRect(ctx);
                 rects.push(r);
                 nextDrawX = r.x + r.width + 2;
@@ -65,7 +48,28 @@ export default function SeatMap() {
 
 }
 
+//canvas mount
+export function Canvas(props) {
 
+    const { draw } = props
+    const canvasRef = useRef(null)
+    const [click, setClick ] = useState({x:"",y:""})
+    const handleClick = (e) => {
+        setClick({x:e.nativeEvent.offsetX, y:e.nativeEvent.offsetY})
+        console.log(click);
+    }
+
+    useEffect(() => {
+
+        const canvas = canvasRef.current
+        const context = canvas.getContext('2d')
+
+        //Our draw come here
+        draw(context)
+    }, [draw])
+
+    return <canvas ref={canvasRef} onClick={handleClick} className="map" width="700" height="400" />
+}
 
 
 

@@ -7,7 +7,8 @@ export function FeaturePosts(props) {
     return (
 
         <section id="feature-feed">
-            <h2>Προσεχως</h2>
+            <h2>Προσεχως</h2> 
+            {/* {this.props.title} */}
             <div id="row">
                 {
                     Object.entries(props.shows).map(([title, show]) => {
