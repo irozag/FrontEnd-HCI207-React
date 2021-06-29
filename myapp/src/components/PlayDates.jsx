@@ -23,7 +23,7 @@ export function Radio(props) {
 
     return (
         <div className="inline">
-            <input type="radio" name="fav_language" value={props.date} onChange={handleRadio}  />
+            <input type="radio" name="fav_language" value={props.date} onChange={handleRadio}  required />
             <label htmlFor="html">{props.date}</label>
         </div>
     )

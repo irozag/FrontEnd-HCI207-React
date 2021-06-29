@@ -8,17 +8,27 @@ export default class Rect {
         this.id = id;
         // this.handleStatusChange = this.handleStatusChange.bind(this);
     }
+    // set setSeat(id) {
+    //     [this.line, this.seat, this.ticket] = [this.id[0], this.id[1], this.id[2]];
+    // }
+    // get getSeat() {
+    //     return  [this.line, this.seat, this.ticket] = [this.id[0], this.id[1], this.id[2]];
+    // }
 
     drawRect(ctx) {
+        // if(this.hasClick === true){
+        //     ctx.fillStyle = "#ccc";
+        // }
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     hasClick = function (x, y) {
         if (this.x <= x && x <= this.x + this.width && this.y <= y && y <= this.y + this.height) {
-            
             return true;
         } else return false;
     }
-
+    // isSelected = function (x, y) {
+ 
+    // }
 
 }
 

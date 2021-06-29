@@ -5,7 +5,7 @@ import PlayDates, { NoPosts } from "./PlayDates";
 export default function Form(props) {
 
 
-    const [state, setState] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "Κανονικό", date: "" })
+    const [state, setState] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "Κανονικό", date: "", submit:"" })
 
     const handleSelect = (e) => {
         setState({ ...state, playId: e.target.value })
@@ -25,7 +25,7 @@ export default function Form(props) {
 
     const Submit = e => {
         e.preventDefault();
-        console.log(state)
+        setState({ ...state, submit: true })
     }
 
     const seatSelected = (rect) => {
@@ -62,6 +62,8 @@ export default function Form(props) {
                                 return <NoPosts />;
                             }
                         })()}
+                        <br/>
+                         <legend>Επιλέξτε θέση:</legend>
                         <SeatMap state={state} seatSelected={seatSelected} ticketSelected={ticketSelected} ></SeatMap>
                     </div>
                     <div className="personalDetails container">
@@ -80,9 +82,7 @@ export default function Form(props) {
                     </div>
                 </div>
             </form>
-            <output name="confirmaion" htmlFor="form">
-                
-            </output>
+            <Output state={state}/>
             
         </div>
     );
@@ -95,5 +95,27 @@ export function Option(props) {
 
 }
 
+export function Output(props) {
+    
+    const Post = e => {
+            //send data to server
+    }
+
+
+    if (props.state.submit !== "") {
+        return (
+            <output name="confirmaion" htmlFor="form">
+                            <h3>Η κράτησή σας</h3>  
+                            <div>Όνομα: <b> {props.state.name} </b>, Επώνυμο: <b>{props.state.surname}</b><br/>  Παράσταση: <b> {props.state.playId}</b> , Ημερομινία: <b> {props.state.date} </b> <br/> 
+                            Θέση: <b> {props.state.stage} </b> Σειρά: <b> {props.state.line}</b> , Αριθμός: <b> {props.state.seat} </b><br/>  Τύπος εισηρίου: <b> {props.state.ticket} </b> </div><br/>
+                            <button className="btn" type="submit" onClick={Post}>Επιβεβαίωση</button>
+                </output>
+        )
+    } else {
+        return <div></div>;
+    }
+
+    
+}
 
 
