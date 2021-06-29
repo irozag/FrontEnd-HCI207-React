@@ -62,6 +62,11 @@ input.in-date {
     padding:0.5em 0;
 }
 
+.inline {
+    display: inline-block;
+    padding:1em;
+}
+
 /* ------------ HEADER ---------- */
 
 .header a, footer a {

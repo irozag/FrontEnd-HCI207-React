@@ -5,7 +5,7 @@ import PlayDates, { NoPosts } from "./PlayDates";
 export default function Form(props) {
 
 
-    const [post, setPost] = useState({ playId: null, name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "", date: "" })
+    const [post, setPost] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "", date: "" })
 
     const handleSelect = (e) => {
         setPost({ ...post, playId: e.target.value })
@@ -35,7 +35,7 @@ export default function Form(props) {
                 <div className="list">
                     <legend>Επιλέξτε Παράσταση:</legend>
                     <select name="plays" onChange={handleSelect}>
-                        <option value={null}>--Παράσταση--</option>
+                        <option value="">--Παράσταση--</option>
                         {
                             Object.entries(props.shows).map(([title, show]) => {
                                 return <Option key={title} show={show} id={title} />
@@ -45,7 +45,7 @@ export default function Form(props) {
                     <div className="container">
                         {(() => {
                             console.log(post.playId)
-                            if (post.playId !== null) {
+                            if (post.playId !== "") {
                                 return <PlayDates id={post.playId} />;
                             } else {
                                 return <NoPosts />;

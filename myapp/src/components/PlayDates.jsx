@@ -3,10 +3,6 @@ import { shows } from '../shows';
 
 export default function PlayDates(props) {
 
-    // console.log(props.dates);
-    // console.log(shows[props.id].dates);
-
-
     return (
         <div>
             {
@@ -21,13 +17,13 @@ export default function PlayDates(props) {
 export function Radio(props) {
 
     // const handleRadio = (e) => {
-    //     props.setPost({ ...props.post, date: e.target.value }) onChange={handleRadio} 
+    //     setPost({ ...props.post, date: e.target.value }) onChange={handleRadio}
     // }
     console.log(props, "hello");
 
     return (
-        <div>
-            <input type="radio" name="fav_language" value={props.date} />
+        <div className="inline">
+            <input type="radio" name="fav_language" value={props.date}   />
             <label htmlFor="html">{props.date}</label>
         </div>
     )
