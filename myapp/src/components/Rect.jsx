@@ -14,14 +14,12 @@ export default class Rect {
     }
     hasClick = function (x, y) {
         if (this.x <= x && x <= this.x + this.width && this.y <= y && y <= this.y + this.height) {
+            
             return true;
         } else return false;
     }
 
-    // isSelected = function (x, y) {
-    //     if (localStorage.length != 0) {
 
-    // }
 }
 
 //  isSelected = function (x, y) {

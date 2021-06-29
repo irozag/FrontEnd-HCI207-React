@@ -40,6 +40,7 @@ export default function Form(props) {
         setState({ ...state, ticket: type })
     }
 
+
     return (
         <div>
             <form onSubmit={Submit}>
@@ -79,6 +80,10 @@ export default function Form(props) {
                     </div>
                 </div>
             </form>
+            <output name="confirmaion" htmlFor="form">
+                
+            </output>
+            
         </div>
     );
 }

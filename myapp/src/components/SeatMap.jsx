@@ -56,6 +56,7 @@ export default function SeatMap(props) {
             nextDrawY = r.y + r.height + 2;
             nextDrawX = 0;
         }
+
     }
 
     return (
@@ -78,7 +79,7 @@ export function Canvas(props) {
         const clickedItem = rects.find((rect) => {
             return rect.hasClick(e.nativeEvent.offsetX,e.nativeEvent.offsetY);
         });
-        // console.log(clickedItem, "handler") 
+        // console.log(clickedItem.x, "handler") 
         if (clickedItem) {
             props.seatSelected(clickedItem)
         }
