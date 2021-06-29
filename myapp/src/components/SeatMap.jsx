@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import Rect from "./Rect";
 import Seat from "./Seat";
+// import {booked} from "./BookedSeats"
 
 
 export default function SeatMap(props) {
@@ -11,9 +12,9 @@ export default function SeatMap(props) {
             this.rectsArr.push(rect);
         },
         rectsArr: [],
-        get latest() {
-            return rects;
-        }
+        // get latest() {
+        //     return rects;
+        // }
     }
 
     const draw = (ctx) => {
@@ -52,10 +53,16 @@ export default function SeatMap(props) {
                 let type = "Εξώστης"
                 r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
                 rects.current = r;
+                
+                // r.booked = booked.includes({ i, z, type })
+             
                 if (selectedId[0] === i && selectedId[1] === z && selectedId[2] === type) {
                     ctx.fillStyle = "#000";
-                } else ctx.fillStyle = "#10bbc7";
+                // } else if (r.booked === true){
+                //     ctx.fillStyle = "#ccc";
+                }else ctx.fillStyle = "#10bbc7";
                 r.drawRect(ctx);
+
                 nextDrawX = r.x + r.width + 2;
             }
             nextDrawY = r.y + r.height + 2;
@@ -87,6 +94,7 @@ export function Canvas(props) {
 
         if (clickedItem) {
             props.seatSelected(clickedItem)
+            console.log(clickedItem)
         }
     }
 

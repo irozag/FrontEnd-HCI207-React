@@ -8,7 +8,7 @@ function Hero() {
                     <div className="title">Ντον Τζοβαννι</div>
                     <div className="composser">Βόλφγκανγκ Αμαντέους Μότσαρτ</div>
                     <div className="dates">Ιούνιος 2014</div>
-                <button><a href="play.html">Περισσότερα</a></button>
+                <button><a href="/don-giovanni">Περισσότερα</a></button>
                 </div>
               </section>
         </div >

@@ -6,7 +6,12 @@ export default class Rect {
         this.width = width;
         this.height = height;
         this.id = id;
+        this.booked = false;
     }
+  
+    // get getSeat() {
+    //     return  [this.line, this.seat, this.ticket] = [this.id[0], this.id[1], this.id[2]];
+    // }
 
     drawRect(ctx) {
         ctx.fillRect(this.x, this.y, this.width, this.height);

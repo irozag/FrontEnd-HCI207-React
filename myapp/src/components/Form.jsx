@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import SeatMap from "./SeatMap";
 import PlayDates, { NoPosts } from "./PlayDates";
 
-export default function Form(props) {
 
+export default function Form(props) {
 
     const [state, setState] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "Κανονικό", date: "", submit:"" })
 
@@ -100,7 +100,6 @@ export function Output(props) {
     const Post = e => {
             //send data to server
     }
-
 
     if (props.state.submit !== "") {
         return (
