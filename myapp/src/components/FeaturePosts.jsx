@@ -23,7 +23,7 @@ export function FeaturePosts(props) {
 
 
 export function FeaturePost(props) {
-    console.log(props.show)
+
     return (
             <div className="feature">
                 <div className="dates">{props.show.mounth}</div>

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import SeatMap  from "./SeatMap";
+import SeatMap from "./SeatMap";
+import PlayDates, { NoPosts } from "./PlayDates";
 
 export default function Form(props) {
 
 
-    const [post, setPost] = useState({ playId: "", name: "", surname: "", email: "" })
+    const [post, setPost] = useState({ playId: null, name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "", date: "" })
 
     const handleSelect = (e) => {
         setPost({ ...post, playId: e.target.value })
@@ -23,30 +24,35 @@ export default function Form(props) {
     }
 
     const Submit = e => {
-        console.log("hello");
         e.preventDefault();
-        // props.handleSubmit(post);
         console.log(post)
     }
 
 
     return (
         <div>
-            <form onSubmit={Submit}>  
+            <form onSubmit={Submit}>
                 <div className="list">
                     <legend>Επιλέξτε Παράσταση:</legend>
                     <select name="plays" onChange={handleSelect}>
-                        <option value="">--Παράσταση--</option>
+                        <option value={null}>--Παράσταση--</option>
                         {
                             Object.entries(props.shows).map(([title, show]) => {
-                                return <Option key={title} show={show} id={title}/>
+                                return <Option key={title} show={show} id={title} />
                             })
                         }
                     </select>
                     <div className="container">
-                           <SeatMap></SeatMap> 
-                        {/* <PlayDates></PlayDates> */}
-                    </div> 
+                        {(() => {
+                            console.log(post.playId)
+                            if (post.playId !== null) {
+                                return <PlayDates id={post.playId} />;
+                            } else {
+                                return <NoPosts />;
+                            }
+                        })()}
+                        <SeatMap state={post}></SeatMap>
+                    </div>
                     <div className="personalDetails container">
                         <div className="row">
                             <label htmlFor="name" >Όνομα:</label>
@@ -73,3 +79,6 @@ export function Option(props) {
     )
 
 }
+
+
+

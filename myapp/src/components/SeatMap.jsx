@@ -3,7 +3,7 @@ import Rect from "./Rect";
 import Seat from "./Seat";
 
 
-export default function SeatMap() {
+export default function SeatMap(props) {
 
     const rects = {
         set current(rect) {
@@ -58,7 +58,7 @@ export default function SeatMap() {
     return (
         <div>
         <Canvas draw={draw} rects={rects.rectsArr} />
-        <Seat seat={rectClicked} />
+        <Seat seat={rectClicked} state={props.state}/>
         </div>
     );
 
@@ -69,7 +69,6 @@ export default function SeatMap() {
 export function Canvas(props) {
 
     const { draw, rects } = props
-    console.log(props)
     const canvasRef = useRef(null)
     const [click, setClick] = useState({ x: "", y: "" })
     //Γιατί την πρώτη φορά χάνει το κλικ;
@@ -80,6 +79,7 @@ export function Canvas(props) {
             return rect.hasClick(click);
         });
         console.log(rectClicked)
+        console.log(rects)
   
         // return  <Seat seat={rectClicked} />;
        
