@@ -5,7 +5,7 @@ import PlayDates, { NoPosts } from "./PlayDates";
 export default function Form(props) {
 
 
-    const [state, setState] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "", date: "" })
+    const [state, setState] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "Κανονικό", date: "" })
 
     const handleSelect = (e) => {
         setState({ ...state, playId: e.target.value })
@@ -34,12 +34,11 @@ export default function Form(props) {
 
     const dateSelected = (date) => {
         setState({ ...state, date: date })
-        console.log(date)
     }
 
-    // const handleTicket = (ticket) => {
-    //     setState({ ...state, ticket: ticket.type })
-    // }
+    const ticketSelected = (type) => {
+        setState({ ...state, ticket: type })
+    }
 
     return (
         <div>
@@ -56,14 +55,13 @@ export default function Form(props) {
                     </select>
                     <div className="container">
                         {(() => {
-                            console.log(state.playId)
                             if (state.playId !== "") {
                                 return <PlayDates id={state.playId} dateSelected={dateSelected}/>;
                             } else {
                                 return <NoPosts />;
                             }
                         })()}
-                        <SeatMap state={state} seatSelected={seatSelected}></SeatMap>
+                        <SeatMap state={state} seatSelected={seatSelected} ticketSelected={ticketSelected} ></SeatMap>
                     </div>
                     <div className="personalDetails container">
                         <div className="row">

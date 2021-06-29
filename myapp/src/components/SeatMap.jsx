@@ -61,7 +61,7 @@ export default function SeatMap(props) {
     return (
         <div>
         <Canvas draw={draw} seatSelected={props.seatSelected} rects={rects.rectsArr} />
-        <Seat state={props.state}/>
+        <Seat state={props.state} ticketSelected={props.ticketSelected}/>
         </div>
     );
 
