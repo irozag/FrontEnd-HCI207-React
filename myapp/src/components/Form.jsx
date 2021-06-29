@@ -92,7 +92,6 @@ export function Option(props) {
     return (
         <option value={props.id}>{props.show.name}</option>
     )
-
 }
 
 export function Output(props) {
