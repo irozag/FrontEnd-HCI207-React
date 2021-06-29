@@ -7,7 +7,7 @@ export default function PlayDates(props) {
         <div>
             {
                 Object.entries(shows[props.id].dates).map(([key, date]) => {
-                    return <Radio key={key} date={date} />
+                    return <Radio key={key} date={date} dateSelected={props.dateSelected}/>
                 })
             }
         </div>
@@ -16,14 +16,14 @@ export default function PlayDates(props) {
 
 export function Radio(props) {
 
-    // const handleRadio = (e) => {
-    //     setPost({ ...props.post, date: e.target.value }) onChange={handleRadio}
-    // }
-    console.log(props, "radio here");
+    const handleRadio = (e) => {
+            props.dateSelected(e.target.value)
+    }
+
 
     return (
         <div className="inline">
-            <input type="radio" name="fav_language" value={props.date}   />
+            <input type="radio" name="fav_language" value={props.date} onChange={handleRadio}  />
             <label htmlFor="html">{props.date}</label>
         </div>
     )

@@ -32,6 +32,15 @@ export default function Form(props) {
         setState({ ...state, stage: rect.id.type, line: rect.id.i, seat: rect.id.z })
     }
 
+    const dateSelected = (date) => {
+        setState({ ...state, date: date })
+        console.log(date)
+    }
+
+    // const handleTicket = (ticket) => {
+    //     setState({ ...state, ticket: ticket.type })
+    // }
+
     return (
         <div>
             <form onSubmit={Submit}>
@@ -49,7 +58,7 @@ export default function Form(props) {
                         {(() => {
                             console.log(state.playId)
                             if (state.playId !== "") {
-                                return <PlayDates id={state.playId} />;
+                                return <PlayDates id={state.playId} dateSelected={dateSelected}/>;
                             } else {
                                 return <NoPosts />;
                             }
