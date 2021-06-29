@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { shows } from '../shows';
 
 export default function PlayDates(props) {
@@ -19,7 +19,7 @@ export function Radio(props) {
     // const handleRadio = (e) => {
     //     setPost({ ...props.post, date: e.target.value }) onChange={handleRadio}
     // }
-    console.log(props, "hello");
+    console.log(props, "radio here");
 
     return (
         <div className="inline">
@@ -30,5 +30,5 @@ export function Radio(props) {
 }
 
 export function NoPosts() {
-    return (<div>empy</div>)
+    return (<div></div>)
 }

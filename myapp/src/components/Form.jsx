@@ -5,29 +5,32 @@ import PlayDates, { NoPosts } from "./PlayDates";
 export default function Form(props) {
 
 
-    const [post, setPost] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "", date: "" })
+    const [state, setState] = useState({ playId: "", name: "", surname: "", email: "", stage: "", seat: "", line: "", ticket: "", date: "" })
 
     const handleSelect = (e) => {
-        setPost({ ...post, playId: e.target.value })
+        setState({ ...state, playId: e.target.value })
     }
 
     const handleName = (e) => {
-        setPost({ ...post, name: e.target.value })
+        setState({ ...state, name: e.target.value })
     }
 
     const handleSurname = (e) => {
-        setPost({ ...post, surname: e.target.value })
+        setState({ ...state, surname: e.target.value })
     }
 
     const handleEmail = (e) => {
-        setPost({ ...post, email: e.target.value })
+        setState({ ...state, email: e.target.value })
     }
 
     const Submit = e => {
         e.preventDefault();
-        console.log(post)
+        console.log(state)
     }
 
+    const seatSelected = (rect) => {
+        setState({ ...state, stage: rect.id.type, line: rect.id.i, seat: rect.id.z })
+    }
 
     return (
         <div>
@@ -44,14 +47,14 @@ export default function Form(props) {
                     </select>
                     <div className="container">
                         {(() => {
-                            console.log(post.playId)
-                            if (post.playId !== "") {
-                                return <PlayDates id={post.playId} />;
+                            console.log(state.playId)
+                            if (state.playId !== "") {
+                                return <PlayDates id={state.playId} />;
                             } else {
                                 return <NoPosts />;
                             }
                         })()}
-                        <SeatMap state={post}></SeatMap>
+                        <SeatMap state={state} seatSelected={seatSelected}></SeatMap>
                     </div>
                     <div className="personalDetails container">
                         <div className="row">

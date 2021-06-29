@@ -1,9 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect} from "react";
 import Rect from "./Rect";
 import Seat from "./Seat";
 
 
 export default function SeatMap(props) {
+
 
     const rects = {
         set current(rect) {
@@ -25,9 +26,10 @@ export default function SeatMap(props) {
         for (let i = 1; i <= 10; i++) {
             ctx.fillStyle = "#000";
             ctx.fillText("σειρά: " + i, nextDrawX, nextDrawY + 15);
+            ctx.fillStyle = "#7602ce";
             nextDrawX += nextDrawX + 65;
             for (let z = 1; z <= 50; z++) {
-                let type = "stage1"
+                let type = "Πλατεία"
                 var r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
                 rects.current = r;
                 r.drawRect(ctx);
@@ -37,12 +39,15 @@ export default function SeatMap(props) {
             nextDrawX = 0;
         }
 
+        nextDrawY = nextDrawY + 10;
+
         for (let i = 1; i <= 5; i++) {
             ctx.fillStyle = "#000";
             ctx.fillText("σειρά: " + i, nextDrawX, nextDrawY + 15);
+            ctx.fillStyle = "#10bbc7";
             nextDrawX += nextDrawX + 65;
             for (let z = 1; z <= 50; z++) {
-                let type = "stage2"
+                let type = "Εξώστης"
                 r = new Rect(nextDrawX, nextDrawY, width, height, { i, z, type });
                 r.drawRect(ctx);
                 rects.current = r;
@@ -53,12 +58,10 @@ export default function SeatMap(props) {
         }
     }
 
-    const rectClicked =0;
-
     return (
         <div>
-        <Canvas draw={draw} rects={rects.rectsArr} />
-        <Seat seat={rectClicked} state={props.state}/>
+        <Canvas draw={draw} seatSelected={props.seatSelected} rects={rects.rectsArr} />
+        <Seat state={props.state}/>
         </div>
     );
 
@@ -70,19 +73,15 @@ export function Canvas(props) {
 
     const { draw, rects } = props
     const canvasRef = useRef(null)
-    const [click, setClick] = useState({ x: "", y: "" })
-    //Γιατί την πρώτη φορά χάνει το κλικ;
 
     const handleClick = (e) => {
-        setClick({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY })
-        const rectClicked = rects.find((rect) => {
-            return rect.hasClick(click);
+        const clickedItem = rects.find((rect) => {
+            return rect.hasClick(e.nativeEvent.offsetX,e.nativeEvent.offsetY);
         });
-        console.log(rectClicked)
-        console.log(rects)
-  
-        // return  <Seat seat={rectClicked} />;
-       
+        // console.log(clickedItem, "handler") 
+        if (clickedItem) {
+            props.seatSelected(clickedItem)
+        }
     }
 
     useEffect(() => {
@@ -92,35 +91,9 @@ export function Canvas(props) {
         draw(context)
     }, [draw])
 
-    return <canvas ref={canvasRef} onClick={handleClick} className="map" width="700" height="400" />
+    return <canvas ref={canvasRef} onClick={handleClick} className="map" width="700" height="350" />
 }
 
 
 
 
-// <div class="container">
-// <div class="row  g-3 justify-content-md-center">
-//     <div class="col-lg-3 col-12">
-//         <label for="ticket" class="form-label">Τοποθεσία:</label>
-//         <input type="text" name="stage" class="form-control p-2" id="stage" disabled
-//             size="7">
-//     </div>
-//     <div class="col-lg-3 col-12">
-//         <label for="seat" class="form-label">Θέση:</label>
-//         <input type="text" name="seat" class="form-control p-2" id="seatSelection"
-//             disabled size="5">
-//     </div>
-//     <div class="col-lg-3 col-12">
-//         <label for="seat" class="form-label">Σειρά:</label>
-//         <input type="text" name="line" class="form-control p-2" id="lineSelection"
-//             disabled size="5">
-//     </div>
-//     <div class="col-lg-3 col-12">
-//         <label for="ticket" class="form-label">Εισητήριο:</label>
-//         <select id="ticket" class="form-select p-2" name="ticket">
-//             <option value="regural">Κανονικό</option>
-//             <option value="student">Φοιτιτικό</option>
-//         </select>
-//     </div>
-// </div><!-- row -->
-// </div><!-- conteiner -->
