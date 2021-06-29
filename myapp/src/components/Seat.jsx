@@ -2,8 +2,6 @@ import React from "react";
 
 export  default function Seat(props) {
 
-
-    // const [seat,setSeat] = useState({ stage: props.stage, seat: props.seat, line: props.line, ticket:"" })
     const handleSelect = (e) => {
         props.ticketSelected(e.target.value)
     }
